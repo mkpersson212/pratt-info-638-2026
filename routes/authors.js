@@ -8,5 +8,8 @@ router.get('/', function(req, res, next) {
   res.render('authors/index', { title: 'BookedIn || Authors', authors: authors });
 });
 
-module.exports = router;
+router.get('/form', async (req, res, next) => {
+  res.render('authors/form', { title: 'BookedIn || Authors' });
+});
 
+module.exports = router;
