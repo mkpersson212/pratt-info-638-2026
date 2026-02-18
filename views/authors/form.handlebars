@@ -1,4 +1,10 @@
 <h1>Authors</h1>
+<ul>
+ {{#each authors}}
+   <li>{{this.firstName}} {{this.lastName}}</li>
+ {{/each}}
+</ul>
+
 <form action="/authors/create" role="form" method="post">
   <div>
     <label for="first_name">First Name</label>
@@ -10,9 +16,3 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-<ul>
- {{#each authors}}
-   <li>{{this.firstName}} {{this.lastName}}</li>
- {{/each}}
-</ul>

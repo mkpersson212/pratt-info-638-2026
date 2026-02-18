@@ -6,7 +6,7 @@ const handlebars = require('express-handlebars').create();
 const indexRouter = require('./routes/index');
 const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 
 //framework setup
@@ -15,6 +15,7 @@ const port = 3000;
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //application setup
 app.use('/', indexRouter);
@@ -33,8 +34,7 @@ app.use((err, _req, res, _next) => {
   res.send("<h1>500 - Aaaahrg, why did you do this to me!</h1>");
 })
 
-app.use(bodyParser.urlencoded({ extended: true }))
-
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(port, () => console.log(
 `Express started on http://localhost:${port}
