@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const authors = [
-    "James S. A. Corey", "Craig Alanson", "Cixin Liu"
+  {firstName: "James", lastName: "S. A. Corey"},
+  {firstName: "Craig", lastName: "Alanson"},
+  {firstName: "Cixin", lastName: "Liu"},
+  {firstName: "Eugene", lastName: "Levy"}
   ]
 
 router.get('/', function(req, res, next) {
