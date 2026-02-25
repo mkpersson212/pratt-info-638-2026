@@ -18,5 +18,11 @@ router.post('/create', async (req, res, next) => {
   res.redirect(303, '/authors')
 });
 
+router.get('/edit', async (req, res, next) => {
+  let authorIndex = req.query.id;
+  let author = Author.get(authorIndex);
+  res.render('/authors/form', {title: 'BookedIn || Authors', author: author});
+})
+
 
 module.exports = router;

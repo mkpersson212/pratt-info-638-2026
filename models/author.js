@@ -8,4 +8,8 @@ const authors = [
   exports.all = authors;
   exports.add = (author) => {
   authors.push(author);
+
+  exports.get = (idx) => {
+    return authors[idx];
+  }
 }
