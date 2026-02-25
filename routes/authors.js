@@ -1,11 +1,10 @@
 const express = require('express');
-
 const Author = require('../models/author');
-
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-  res.render('authors/index', { title: 'BookedIn || Authors', authors: Author.all });
+  const authors = Author.all;
+  res.render('authors/index', { title: 'BookedIn || Authors', authors: authors });
 });
 
 router.get('/form', function(req, res, next) {
@@ -19,9 +18,9 @@ router.post('/upsert', function(req, res, next) {
 });
 
 router.get('/edit', function(req, res, next) {
-  let authorIdx = req.query.id
-  let author = Author.get(authorIdx);
-  res.render('authors/form', { title: 'BookedIn || Authors', author: author, authorIdx: authorIdx });
+  let authorIndex = req.query.id;
+  let author = Author.get(authorIndex);
+  res.render('authors/form', { title: 'BookedIn || Authors', author: author, authorIndex: authorIndex });
 });
 
 module.exports = router;
