@@ -1,12 +1,12 @@
 //framework imports
 const express = require('express');
 const handlebars = require('express-handlebars').create();
+const bodyParser = require('body-parser');
 
-//application imports
+//application improts
 const indexRouter = require('./routes/index');
 const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
-const bodyParser = require('body-parser');
 
 
 //framework setup
@@ -15,7 +15,8 @@ const port = 3000;
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //application setup
 app.use('/', indexRouter);
@@ -25,7 +26,7 @@ app.use('/books', booksRouter);
 
 app.use((_req, res) => {
   res.status(404);
-  res.send("<h1>404 - Not found in the system (〜￣▽￣)〜</h1>");
+  res.send("<h1>404 - please go away, i am not home!</h1>");
 });
 
 app.use((err, _req, res, _next) => {
@@ -34,7 +35,8 @@ app.use((err, _req, res, _next) => {
   res.send("<h1>500 - Aaaahrg, why did you do this to me!</h1>");
 })
 
-app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 app.listen(port, () => console.log(
 `Express started on http://localhost:${port}

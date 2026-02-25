@@ -1,11 +1,10 @@
 const books = [
-  {title: "Leviathan Wakes", yearPublished: 2011},
-  {title: "Caliban's War", yearPublished: 2012},
-  {title: "Millenium Dictionary", yearPublished: 2000},
-  ]
+  {title: "Leviathan Wakes", publishingYear: 2011},
+  {title: "Caliban’s War", publishingYear: 2012}
+];
 
-  exports.add = (book) => {
+exports.add = (book) => {
   books.push(book);
 }
 
-  exports.all = books
+exports.all = books

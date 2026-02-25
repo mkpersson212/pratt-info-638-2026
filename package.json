@@ -10,8 +10,8 @@
   "devDependencies": {
     "nodemon": "^3.1.14"
   },
-"scripts": {
-  "start": "node ./bookedin.js",
-  "dev": "./node_modules/nodemon/bin/nodemon.js ./bookedin.js"
+  "scripts": {
+    "start": "node ./bookedin.js",
+    "dev": "./node_modules/nodemon/bin/nodemon.js ./bookedin.js"
   }
 }

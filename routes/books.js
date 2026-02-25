@@ -1,10 +1,12 @@
 const express = require('express');
+
 const Book = require('../models/book');
+
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-  const books = Book.all;
-  res.render('books/index', { title: 'BookedIn || Books', books: books });
+  const books = Book.all
+  res.render('books/index', { title: 'BookedIn || books', books: books });
 });
 
 router.get('/form', async (req, res, next) => {
@@ -18,3 +20,4 @@ router.post('/create', async (req, res, next) => {
 });
 
 module.exports = router;
+
