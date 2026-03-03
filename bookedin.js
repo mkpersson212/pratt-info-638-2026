@@ -26,7 +26,7 @@ app.use('/books', booksRouter);
 
 app.use((_req, res) => {
   res.status(404);
-  res.send("<h1>404 - please go away, i am not home!</h1>");
+  res.send("<h1>404 - Not found in the system</h1>");
 });
 
 app.use((err, _req, res, _next) => {
