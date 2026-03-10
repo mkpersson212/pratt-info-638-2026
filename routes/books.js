@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Book = require('../models/book');
 const Author = require('../models/author');
+const Genre = require ('../models/genre');
 
 router.get('/', function(req, res, next) {
   const books = Book.all
@@ -32,7 +33,8 @@ router.get('/edit', async (req, res, next) => {
     title: 'BookedIn || Books',
     book: book,
     bookIndex: bookIndex,
-    authors: Author.all
+    authors: Author.all,
+    genres: Genre.all,
   });
 });
 
