@@ -29,6 +29,7 @@ router.post('/upsert', async (req, res, next) => {
 router.get('/edit', async (req, res, next) => {
   let bookIndex = req.query.id;
   let book = Book.get(bookIndex);
+  let genre = Genre.get(genreIndex);
   res.render('books/form', {
     title: 'BookedIn || Books',
     book: book,

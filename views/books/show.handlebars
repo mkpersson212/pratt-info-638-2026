@@ -2,7 +2,5 @@
 {{#if authors}}
   Written by {{#each authors}}{{this.firstName}} {{this.lastName}}{{#unless @last}}, {{/unless}}{{/each}}
 {{/if}}
-<p>
-  Originally published in {{book.publishingYear}}
-</p>
-<p>Genre: {{genreIds}}</p>
+<p>Originally published in {{book.publishingYear}}</p>
+<p>Genre: {{#each genreIds}}{{../genres.[this].storyType}}</p>

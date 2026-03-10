@@ -30,7 +30,7 @@
     <select name="genreIds" multiple id="genreIds">
       <option disabled value>-- select Genre --</option>
       {{#each genres}}
-        <option value="{{@index}}" {{#if (and @root.book (in @root.book.genreIds @index))}}selected{{/if}}>
+        <option value="{{@index}}" {{#if selected}}selected{{/if}}>
           {{storyType}}
         </option>
       {{/each}}
