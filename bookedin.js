@@ -10,7 +10,7 @@ const expressSession = require('express-session');
 const indexRouter = require('./routes/index');
 const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
-const genresRouter = require('.routes/genres');
+const genresRouter = require('./routes/genres');
 
 //framework setup
 const app = express();
