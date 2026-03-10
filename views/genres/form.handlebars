@@ -1,0 +1,13 @@
+<form action="/genres/upsert" role="form" method="post">
+  {{#if genre}}
+    <div>
+      <h2>{{storyType}}</h2>
+      <input type="hidden" name="id" value="{{genreIdx}}">
+    </div>
+  {{/if}}
+  <div>
+    <label for="storyType">Genre</label>
+    <input type="text" id="storyType" name="storyType" {{#if genre}}value="{{genre.storyType}}"{{/if}}>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
