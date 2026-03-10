@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/authors', authorsRouter);
 app.use('/books', booksRouter);
-app.use('/genres');
+app.use('/genres', genresRouter);
 
 
 app.use((_req, res) => {
