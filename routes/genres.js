@@ -1,13 +1,13 @@
 const express = require('express');
-const router = express.Router();
-
-const Genre = require('../models/genre');
 const Book = require('../models/book');
 const Author = require('../models/author');
+const Genre = require('../models/genre');
+const router = express.Router();
+
 
 router.get('/', function(req, res, next) {
-  const genres = Genre.all
-  res.render('genres/index', { title: 'BookedIn || Genres', genres: genres });
+  /*const genres = Genre.all;*/
+  res.render('genres/index', { title: 'BookedIn || Genres', genres: Genre.all });
 });
 
 router.get('/form', async (req, res, next) => {
@@ -35,17 +35,6 @@ router.get('/edit', async (req, res, next) => {
 	genreIndex: genreIndex,
 	authors: Author.all
   });
-});
-
-router.get('/show/:id', async (req, res, next) => {
-  var templateVars = {
-	title: "BookedIn || show",
-	genre: Genre.get(req.params.id)
-  }
-  if (templateVars.genre.authorIds) {
-	templateVars.authors = templateVars.genre.authorIds.map((authorId) => Author.get(authorId));
-  }
-  res.render('genres/show', templateVars);
 });
 
 module.exports = router;

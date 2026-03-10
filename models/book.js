@@ -19,7 +19,8 @@ exports.upsert = (book) => {
   if (book.authorIds && !Array.isArray(book.authorIds)) {
     book.authorIds = [book.authorIds];
   }
-  if (book.genreIds && !Array.isArray(book.genreIds)) {
+  if (book.genreIds && !Array.isArray(book.genreIds)) //checks for genres in the array, if none, inserts new one to prevent null references
+  { 
     book.genreIds = [book.genreIds];
   }
   if (book.id) {

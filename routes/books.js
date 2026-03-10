@@ -45,11 +45,12 @@ router.get('/edit', async (req, res, next) => {
 router.get('/show/:id', async (req, res, next) => {
   var templateVars = {
     title: "BookedIn || show",
-    book: Book.get(req.params.id),
-    genres: Genre.all // Passes genres data to the book's detailed show view
-  };
+    book: Book.get(req.params.id),  };
   if (templateVars.book.authorIds) {
     templateVars.authors = templateVars.book.authorIds.map((authorId) => Author.get(authorId));
+  }  
+  if (templateVars.book.genreIds) {
+    templateVars.genres = templateVars.book.genreIds.map((genreId) => Genre.get(genreId));
   }
   res.render('books/show', templateVars);
 });

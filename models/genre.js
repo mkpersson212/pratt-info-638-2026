@@ -8,6 +8,8 @@ const genres = [
   {storyType: "Thriller"},
 ]
 
+//This file has the same functions and references as the author.js, but for genres
+
 exports.all = genres;
 exports.upsert = (genre) => {
   if (genre.id) {
@@ -24,6 +26,6 @@ exports.update = (genre) => {
   genre.id = parseInt(genre.id);
   genres[genre.id] = genre;
 }
-exports.get = (idx) => {
-  return genres[idx];
+exports.get = (index) => {
+  return genres[index];
 }
