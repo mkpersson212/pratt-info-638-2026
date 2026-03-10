@@ -11,7 +11,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/form', async (req, res, next) => {
-  res.render('books/form', { title: 'BookedIn || Books', authors: Author.all });
+  res.render('books/form', { 
+    title: 'BookedIn || Books', 
+    authors: Author.all, 
+    genres: Genre.all // Pass genres data to the form view
+  });
 });
 
 router.post('/upsert', async (req, res, next) => {
@@ -29,7 +33,6 @@ router.post('/upsert', async (req, res, next) => {
 router.get('/edit', async (req, res, next) => {
   let bookIndex = req.query.id;
   let book = Book.get(bookIndex);
-  let genre = Genre.get(genreIndex);
   res.render('books/form', {
     title: 'BookedIn || Books',
     book: book,
@@ -42,8 +45,9 @@ router.get('/edit', async (req, res, next) => {
 router.get('/show/:id', async (req, res, next) => {
   var templateVars = {
     title: "BookedIn || show",
-    book: Book.get(req.params.id)
-  }
+    book: Book.get(req.params.id),
+    genres: Genre.all // Passes genres data to the book's detailed show view
+  };
   if (templateVars.book.authorIds) {
     templateVars.authors = templateVars.book.authorIds.map((authorId) => Author.get(authorId));
   }
