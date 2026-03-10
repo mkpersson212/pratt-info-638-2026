@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/form', async (req, res, next) => {
-  res.render('genres/form', { title: 'BookedIn || genres', authors: Author.all });
+  res.render('genres/form', { title: 'BookedIn || genres', genres: Genre.all });
 });
 
 router.post('/upsert', async (req, res, next) => {
