@@ -7,11 +7,11 @@ const Author = require('../models/author');
 
 router.get('/', function(req, res, next) {
   const genres = Genre.all
-  res.render('genres/index', { title: 'BookedIn || genres', genres: genres });
+  res.render('genres/index', { title: 'BookedIn || Genres', genres: genres });
 });
 
 router.get('/form', async (req, res, next) => {
-  res.render('genres/form', { title: 'BookedIn || genres', genres: Genre.all });
+  res.render('genres/form', { title: 'BookedIn || Add Genre', genres: Genre.all });
 });
 
 router.post('/upsert', async (req, res, next) => {

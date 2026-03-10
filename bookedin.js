@@ -10,7 +10,7 @@ const expressSession = require('express-session');
 const indexRouter = require('./routes/index');
 const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
-
+const genresRouter = require('.routes/genres');
 
 //framework setup
 const app = express();
@@ -60,17 +60,18 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/authors', authorsRouter);
 app.use('/books', booksRouter);
+app.use('/genres');
 
 
 app.use((_req, res) => {
   res.status(404);
-  res.send("<h1>404 - please go away, i am not home!</h1>");
+  res.send("<h1>404 - please kill me, this is misery!</h1>");
 });
 
 app.use((err, _req, res, _next) => {
   console.error(err.message);
   res.status(500);
-  res.send("<h1>500 - Aaaahrg, why did you do this to me!</h1>");
+  res.send("<h1>500 - server broke idk</h1>");
 })
 
 
