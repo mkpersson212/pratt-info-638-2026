@@ -18,17 +18,10 @@ router.get('/register', async (req, res, next) => {
 });
 
 router.post('/register', async (req, res, next) => {
-  console.log('body: ' + JSON.stringify(req.body));
-  const user = User.getByEmail(req.body.email)
-  if (user) {
-    res.render('users/register', {
-      title: 'BookedIn || Login',
-      flash: {
-        type: 'danger',
-        intro: 'Error!',
-        message: `A user with this email already exists`}
-    });
-  } else {
+  if (helpers.isLoggedIn(req, res)) {
+    return
+  }
+ else {
     User.add(req.body);
     req.session.flash = {
       type: 'info',
@@ -41,20 +34,16 @@ router.post('/register', async (req, res, next) => {
 
 
 router.get('/login', async (req, res, next) => {
-  res.render('users/login', { title: 'BookedIn || Login' });
-});
+  if (helpers.isLoggedIn(req, res)) {
+    return
+  }})
+;
+
 router.post('/login', async (req, res, next) => {
-  console.log('body: ' + JSON.stringify(req.body));
-  const user = User.login(req.body)
-  if (user) {
-    req.session.currentUser = user
-    req.session.flash = {
-      type: 'info',
-      intro: 'Success!',
-      message: 'You are now logged in',
-    };
-    res.redirect(303, '/');
-  } else {
+  if (helpers.isLoggedIn(req, res)) {
+    return
+  }
+  else {
     res.render('users/login', {
       title: 'BookedIn || Login',
       flash: {

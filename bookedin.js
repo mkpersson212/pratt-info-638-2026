@@ -79,7 +79,6 @@ app.use('/authors', authorsRouter);
 app.use('/books', booksRouter);
 app.use('/genres', genresRouter);
 app.use('/users', usersRouter);
-app.use('/books_users', booksUsersRouter);
 
 
 app.use((_req, res) => {
