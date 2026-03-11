@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index');
 const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
 const genresRouter = require('./routes/genres');
+const usersRouter = require('./routes/users');
 
 //framework setup
 const app = express();
@@ -55,17 +56,24 @@ app.use((req, res, next) => {
   next()
 })
 
+// session configuration
+//make the current user available in views
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session.currentUser
+  next()
+})
 
 //application setup
 app.use('/', indexRouter);
 app.use('/authors', authorsRouter);
 app.use('/books', booksRouter);
 app.use('/genres', genresRouter);
+app.use('/users', usersRouter);
 
 
 app.use((_req, res) => {
   res.status(404);
-  res.send("<h1>404 - please kill me, this is misery!</h1>");
+  res.send("<h1>404 - not found in the system</h1>");
 });
 
 app.use((err, _req, res, _next) => {
@@ -73,7 +81,6 @@ app.use((err, _req, res, _next) => {
   res.status(500);
   res.send("<h1>500 - server broke idk</h1>");
 })
-
 
 app.listen(port, () => console.log(
 `Express started on http://localhost:${port}
