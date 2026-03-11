@@ -1,4 +1,6 @@
 <form action="/genres/upsert" role="form" method="post">
+<input type="hidden" name="_csrf" value="{{_csrfToken}}">
+
   {{#if genre}}
     <div>
       <h2>{{storyType}}</h2>
